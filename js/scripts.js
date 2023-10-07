@@ -1,6 +1,7 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 const score = document.querySelector(".score--value");
+const maxScore = document.querySelector(".max--value");
 const finalScore = document.querySelector(".final-score > span");
 const menu = document.querySelector(".menu-screen");
 const buttonPlay = document.querySelector(".btn-play");
@@ -13,6 +14,14 @@ let points = 0;
 let velocidade = 300;
 let cont = 1;
 let statusSnake = true;
+
+if (
+  localStorage.getItem("maxScore") === null ||
+  localStorage.getItem("maxScore") == 0
+) {
+  localStorage.setItem("maxScore", 0);
+}
+maxScore.innerText = localStorage.getItem("maxScore");
 
 const incrementScore = () => {
   points += 10;
@@ -43,7 +52,6 @@ const food = {
 
 const drawFood = () => {
   const { x, y, color } = food;
-
   ctx.shadowColor = color;
   ctx.shadowBlur = 6;
   ctx.fillStyle = color;
@@ -144,6 +152,10 @@ const checkCollision = () => {
 };
 
 const gameOver = () => {
+  if (localStorage.getItem("maxScore") < points) {
+    localStorage.setItem("maxScore", points);
+    maxScore.innerText = localStorage.getItem("maxScore");
+  }
   statusSnake = false;
   direction = undefined;
   menu.style.display = "flex";
