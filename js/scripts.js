@@ -11,7 +11,7 @@ const initialPosition = { x: 270, y: 240 };
 let snake = [initialPosition];
 let direction, loopId;
 let points = 0;
-let velocidade = 300;
+let velocidade = 250;
 let cont = 1;
 let statusSnake = true;
 
@@ -173,9 +173,11 @@ const gameLoop = () => {
   checkEat();
   checkCollision();
 
-  if (+points == 100 * cont) {
-    velocidade -= 50;
-    cont++;
+  if (velocidade > 100) {
+    if (+points == 100 * cont) {
+      velocidade -= 10;
+      cont++;
+    }
   }
 
   loopId = setTimeout(() => {
