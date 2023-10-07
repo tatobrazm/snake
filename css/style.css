@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppings", sans-serif;
+}
+
+[style*="--aspect-ratio"]::before {
+  content: "";
+  height: 0;
+  float: left;
+  padding-bottom: calc(100% / (var(--aspect-ratio)));
+}
+[style*="--aspect-ratio"]::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+body {
+  background-color: #191919;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+}
+
+canvas {
+  width: 100%;
+  background-color: #111;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.8rem;
+}
+
+.score--value {
+  font-weight: 700;
+  font-size: 4.5rem;
+  display: block;
+  margin-top: -10px;
+}
+
+.menu-screen {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.game-over {
+  color: brown;
+  text-transform: uppercase;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.final-score {
+  color: brown;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.btn-play {
+  background-color: rgb(10, 173, 29);
+  border: none;
+  border-radius: 100px;
+  padding: 10px 15px 10px 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+}
